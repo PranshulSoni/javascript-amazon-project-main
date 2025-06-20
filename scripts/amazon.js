@@ -1,3 +1,4 @@
+import {cart} from '/scripts/cart.js';
 let productsHtml='';
 products.forEach((product)=>{
     const halfStarSteps = Math.round(product.rating.stars * 2) / 2;
