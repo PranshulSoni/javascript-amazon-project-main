@@ -40,6 +40,7 @@
         });
         const cartDisplay=document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
         console.log(cart);
+        
   }
 
 
@@ -68,4 +69,12 @@
     matchingItem.deliveryOptionId=deliveryOptionId;
 
     saveToStorage();
+  }
+
+    export function getCartQty() {
+    let cartQuantity=0;
+      cart.forEach((cartItem)=>{
+        cartQuantity+=cartItem.quantity;
+      });
+      return cartQuantity;
   }

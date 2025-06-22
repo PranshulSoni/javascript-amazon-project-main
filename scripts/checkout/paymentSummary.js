@@ -1,8 +1,9 @@
-import { cart } from "../cart.js";
+import { cart, updateCartQty, getCartQty} from "../cart.js";
 import { getProductId } from "../products.js";
 import { getDeliveryOption } from "../deliveryoptions.js";
 import { formatCurrency } from "../utils/money.js";
 export function renderPaymentSummary(){
+    let cartQuantity=getCartQty();
     let productpricecents=0;
     let shippingpricecents=0;
 
@@ -15,7 +16,7 @@ export function renderPaymentSummary(){
     const totalBeforetax=productpricecents+shippingpricecents;
     const taxCents=totalBeforetax*(0.1);
     const totalCents=taxCents+totalBeforetax;
-
+    
     const paymentSummaryHtml=
     `
         <div class="payment-summary-title">
@@ -23,7 +24,7 @@ export function renderPaymentSummary(){
             </div>
 
             <div class="payment-summary-row">
-                <div>Items (3):</div>
+                <div>Items (${cartQuantity}):</div>
                 <div class="payment-summary-money">$${formatCurrency(productpricecents)}</div>
             </div>
 
