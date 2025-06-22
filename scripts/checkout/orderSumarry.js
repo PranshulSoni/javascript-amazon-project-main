@@ -2,6 +2,7 @@
     import { products , getProductId } from '../products.js';
     import { formatCurrency } from '../utils/money.js';
     import { deliveryOptions , getDeliveryOption} from '../deliveryoptions.js';
+    import { renderPaymentSummary } from './paymentSummary.js';
 
     export function renderOrderSummary(){
 
@@ -76,6 +77,7 @@
             if (container) {
             container.remove();
             }
+            renderPaymentSummary();
         });
         });
 
@@ -122,6 +124,7 @@
             const {productId ,deliveryOptionId}=element.dataset;
             updatDeliverOption(productId,deliveryOptionId);
             renderOrderSummary();
+            renderPaymentSummary();
         });
         });
     }
