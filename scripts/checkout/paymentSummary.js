@@ -1,24 +1,23 @@
-import { cart, updateCartQty, getCartQty} from "../cart.js";
+import { cart, updateCartQty, getCartQty } from "../cartclass.js";
 import { getProductId } from "../products.js";
 import { getDeliveryOption } from "../deliveryoptions.js";
 import { formatCurrency } from "../utils/money.js";
-export function renderPaymentSummary(){
-    let cartQuantity=getCartQty();
-    let productpricecents=0;
-    let shippingpricecents=0;
+export function renderPaymentSummary() {
+    let cartQuantity = getCartQty();
+    let productpricecents = 0;
+    let shippingpricecents = 0;
 
-    cart.forEach((cartItem)=>{
-        const product=getProductId(cartItem.productId);
-        productpricecents+= product.priceCents*cartItem.quantity;
-        const deliveyrOption=getDeliveryOption(cartItem.deliveryOptionId);
-        shippingpricecents+=deliveyrOption.priceCents;
+    cart.cartItems.forEach((cartItem) => {
+        const product = getProductId(cartItem.productId);
+        productpricecents += product.priceCents * cartItem.quantity;
+        const deliveyrOption = getDeliveryOption(cartItem.deliveryOptionId);
+        shippingpricecents += deliveyrOption.priceCents;
     });
-    const totalBeforetax=productpricecents+shippingpricecents;
-    const taxCents=totalBeforetax*(0.1);
-    const totalCents=taxCents+totalBeforetax;
-    
-    const paymentSummaryHtml=
-    `
+    const totalBeforetax = productpricecents + shippingpricecents;
+    const taxCents = totalBeforetax * (0.1);
+    const totalCents = taxCents + totalBeforetax;
+
+    const paymentSummaryHtml = `
         <div class="payment-summary-title">
                 Order Summary
             </div>
@@ -52,6 +51,6 @@ export function renderPaymentSummary(){
                 Place your order
             </button>
     `;
-    document.querySelector('.js-payment-summary').innerHTML=paymentSummaryHtml;
-    
+    document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHtml;
+
 }
