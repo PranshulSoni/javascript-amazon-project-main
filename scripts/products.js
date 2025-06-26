@@ -73,9 +73,7 @@ export function loadProductsfetch() {
       });
       console.log('load products');
     })
-    .catch((error) => {
-      console.error('Error loading products:', error);
-    });
+
   return promise;
 }
 loadProductsfetch().then(() => {

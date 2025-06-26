@@ -7,7 +7,15 @@ import { loadProductsfetch } from "./products.js";
 
 
 async function loadPage() {
-    await loadProductsfetch();
+    try {
+        await loadProductsfetch();
+    }
+    catch (error) {
+        console.error("Error loading products:", erro);
+        document.querySelector('.js-order-summary').innerHTML = "<p>Error loading products. Please try again later.</p>";
+        return;
+    }
+
     renderOrderSummary();
     renderPaymentSummary();
 }

@@ -1,10 +1,10 @@
 import { cart, addtoCart, updateCartQty } from '/scripts/cartclass.js';
-import { products, loadProducts } from '/scripts/products.js';
+import { products, loadProductsfetch } from '/scripts/products.js';
 let productsHtml = '';
-loadProducts(rednerProducts);
+loadProductsfetch().then(rednerProducts); // <-- FIX: call .then(rednerProducts) instead of passing as argument
 
 function rednerProducts() {
-
+  productsHtml = ''; // <-- FIX: reset productsHtml each time before rendering
   products.forEach((product) => {
     const halfStarSteps = Math.round(product.rating.stars * 2) / 2;
     const fileStep = halfStarSteps * 10;
