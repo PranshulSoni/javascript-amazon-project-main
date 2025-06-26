@@ -4,12 +4,13 @@ import "./cartclass.js";
 import "./backendprac.js";
 import { loadProductsfetch } from "./products.js";
 
-Promise.all([
-    loadProductsfetch(),
-]).then((value) => {
-    console.log(value);
+
+
+async function loadPage() {
+    await loadProductsfetch();
     renderOrderSummary();
     renderPaymentSummary();
-});
+}
+loadPage();
 
 

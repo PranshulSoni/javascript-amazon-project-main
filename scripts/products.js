@@ -18,6 +18,7 @@ class Products {
   constructor(productDetails) {
     this.id = productDetails.id;
     this.image = productDetails.image;
+    //hello
     this.name = productDetails.name;
     this.rating = productDetails.rating;
     this.priceCents = productDetails.priceCents;

@@ -90,7 +90,3 @@ export const updatDeliverOption = cart.updatDeliverOption.bind(cart);
 export const getCartQty = cart.getCartQty.bind(cart);
 
 
-function logthis() {
-    console.log(this);
-}
-logthis.call('hello');
